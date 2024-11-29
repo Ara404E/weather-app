@@ -129,6 +129,8 @@
 .dashboard-bottom-section{
     display: flex;
     margin: 0;
+    /* flex-wrap: wrap; Enable wrapping for smaller screens */
+    gap: 10px;
 }
 .day-period{
     gap: 10px;
@@ -138,7 +140,7 @@
     background-color: #FFB200;
     border: solid black 3px;
     box-shadow: 2px 5px rgba(149, 147, 147, 0.2);
-
+    flex: 1 1 100%; /* Full width on smaller screens */
 }
 .day-period ul{
     display: flex;
@@ -175,6 +177,7 @@
     padding: 20px;
     background-color: #635985;
     width: 400px;
+    flex: 1 1 100%; /* Full width on smaller screens */
     margin-left: 5px;
     color: white;
     border: solid black 3px;
@@ -193,10 +196,11 @@
  /* sidebar section */
 .sidebar{
     padding: 20px;
-    background-color: #E3F6F5;
+    background-color: #e3f6f5;
     overflow-y: auto;
-    width: 40%;
+    flex: 1 1 100%; /* Full width on smaller screens */
     max-width: 30%;
+    height: 100%; /* Fix height to fit content */
 }
 
 /* Webkit-based browsers (Chrome, Edge, Safari) */
@@ -284,6 +288,6 @@
 .temp {
     font-size: 1.05rem;
     font-weight: bold;
-    color: #146C94; /* Bright orange for emphasis */
+    color: #146C94; 
     text-align: right;
 }

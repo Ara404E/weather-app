@@ -1,8 +1,7 @@
-import { getWeather } from "./getWeather";
+import { getWeather  } from "./getWeather.js";
 
 
-
-getWeather(10,10,Intl.DateTimeFormat().resolvedOptions().timeZone   ).then( res =>{
-    console.log(res.data)
-});
+getWeather(40.7128, -74.0060, Intl.DateTimeFormat().resolvedOptions().timeZone) 
+    .then(data => console.log(data))
+    .catch(err => console.error(err));
 
