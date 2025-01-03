@@ -3,10 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+        <!-- font-awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css">
+   
+        <!-- css styles file -->
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script type="module" src="main.js" defer></script>
+   
     <title>weather app</title>
 </head>
 <body>
@@ -19,182 +27,382 @@
                     <form class="location-search">
                         <input type="text" placeholder="Search for a location"
                          spellcheck="false" autocomplete="off">
-                         <i class="fa-solid fa-magnifying-glass" 
+                         <i class="fa-solid fa-magnifying-glass search" 
                          aria-hidden="true"></i>
                     </form>
                 </header>
                 <section class="dashboard-body">
-                    <div class="today-conditions">
-                        <div class="header"> <i class="fa-solid fa-sun" style="color: #FFD43B;"></i>
-                            <p> 8°C
-                            </p> 
-                            <span>Sunny</span>
-                        </div>
-                        <div class="main-content">  
-                            <div class="pressure">  presure <br> 
-                                <b>  1000 mb </b>
+                    <div class="dashboard-top-section">
+                        <div class="today-conditions">
+                            <div class="header">
+                                <div class="header-styling">
+                                    <i data-current-weather class=""></i>
+                                <div>
+                                    <p> Weather </p> 
+                                    <p>What's the weather</p>
+                                </div>
                             </div>
-                            <div class="visibilty">visibilty <br>
-                                 <b> 24 km </b>
+                            <div class="sub-heading">
+                                <span data-current-temp style="font-size: 2rem;"></span>
+                                <p data-current-condition style="font-size: 1rem;" ></p>
                             </div>
-                            <div class="humidity"> humidity <br>
-                                 <b> 82.9% </b>
+
+                            <hr class="in-between">
+                            <div class="all">
+                                <div class="condition">  
+                                    <div class="feelsLike-div">
+                                        <p> <i class="fa-solid fa-temperature-half"></i> Feels like</p>
+                                        <span data-current-feelslike></span> 
+                                    </div>
+                                    <div class="wind-div">
+                                        <p><i class="fa-solid fa-wind"> </i> Wind Speed</p>
+                                    <p data-current-windspeed> 20ms </p>
+                                </div>
+                                <div class="chanceOfRain-div">
+                                    <p> <i class="fa-solid fa-droplet"></i> Chance of Rain</p>
+                                    <span data-chance-ofRain> 3%  </span>
+                                </div>
+                                
+                                <div class="chanceOfsnow-div">
+                                    <p><i class="fa-solid fa-snowflake"></i> Chance of Snow</p>
+                                    <span data-chance-ofSnow> 40% </span> 
+                                </div>
                             </div>
                         </div>
                     </div>
-
+                    </div>
+                    <div class="today-conditions-pt2">
+                        <div class="header">
+                            <div class="header-styling-pt2">
+                                <i class="fa-solid fa-wind"> </i>
+                                <div>
+                                    <p style="font-weight: 500;"> Air Quality </p> 
+                                    <p style="font-weight: 500;">Main Pollutant: CO</p>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="sub-heading-pt2"> 
+                                    
+                                <h3> 58 <span class="AQI"> AQI </span> </h3>
+                                    <p style="padding-left: 10px; font-weight: 500;" data-current-windDire></p>  
+                            </div>  
+                            <div class="main-content">
+                            <div class="pressure" data-current-pressure > 
+                                
+                            </div>
+                            <div class="visibilty" data-current-visibilty >
+                                
+                            </div>
+                            <div class="humidity" data-current-humidity> 
+                                
+                            </div>
+                        </div>
+                    </div>
+                    </div>
                     <div class="dashboard-bottom-section">
                         <div class="day-period">
                             <h1 style="text-align: center; color: #222831;">How's the weather today?</h1>
                             <ul>
                                 <li class="period-forecast">
                                     <div class="icon">
-                                        <i class="fa-solid fa-cloud-showers-heavy" aria-hidden="true"></i>
+                                        <i class="" aria-hidden="true" data-day-period-weather ></i>
                                     </div>
-                                    <h3>5°C</h3>
-                                    <p>Morning</p>
+                                    <h3 data-period-temp>5°C</h3>
+                                    <p data-period-name >Morning</p>
                                 </li>
                                 <li class="period-forecast">
                                     <div class="icon">
-                                        <i class="fa-solid fa-cloud-showers-heavy" aria-hidden="true"></i>
+                                        <i class="fa-solid fa-cloud-showers-heavy" aria-hidden="true" data-day-period-weather ></i>
                                     </div>
-                                    <h3>5°C</h3>
-                                    <p>Morning</p>
+                                    <h3 data-period-temp>5°C</h3>
+                                    <p data-period-name >Morning</p>
                                 </li>
                             <li class="period-forecast">
                                 <div class="icon">
-                                    <i class="fa-solid fa-cloud-showers-heavy" aria-hidden="true"></i>
+                                    <i class="fa-solid fa-cloud-showers-heavy" aria-hidden="true" data-day-period-weather ></i>
                                 </div>
-                                <h3>5°C</h3>
-                                <p>Morning</p>
+                                <h3 data-period-temp>5°C</h3>
+                                <p data-period-name>Morning</p>
                             </li>
                             <li class="period-forecast">
                                 <div class="icon">
-                                    <i class="fa-solid fa-cloud-showers-heavy" aria-hidden="true"></i>
+                                    <i class="fa-solid fa-cloud-showers-heavy" aria-hidden="true" data-day-period-weather ></i>
                                 </div>
-                                <h3>5°C</h3>
-                                <p>Morning</p>
+                                <h3 data-period-temp>5°C</h3>
+                                <p data-period-name >Morning</p>
                             </li>
                         </div>
                     </ul>
                         <div class="tomorrow">
                             <h3> Tomorrow </h3>
                             <div class="icon">
-                                <i class="fa-solid fa-cloud-showers-heavy" aria-hidden="true"></i>
+                                <i class="fa-solid fa-cloud-showers-heavy" aria-hidden="true" data-tomorrow-icon ></i>
                             </div>
-                                <h1> 7°C </h1>
-                                <p> Sunny, Partially cloudy </p>
+                                <h1 data-tomorrow-temp> 7°C </h1>
+                                <p data-tomorrow-condition > Sunny, Partially cloudy </p>
                         </div>    
                     </div>
 
                     </section>
             </section>
         <aside class="sidebar">
-            <div class="weather-header"></div>
+            <div class="weather-header">
+                <div>
+                    <h3 data-current-condition>Clear</h3>
+                    <p data-current-location> </p>
+                </div>
+                <h2 data-current-tempe></h2>
+            </div>
+            <div class="sun-transition">
+                <div class="sun-path">
+                    <div class="sun">
+                        <i  class="fa-solid fa-sun sun-icon" style="left: 100.00%; 
+                        transform: translateX(-100.00%);"
+                         aria-hidden="true"></i>
+                         <div class="progress-bar"> <div class="sun-marker" style="left:50%"> </div> </div>
+                     </div>
+                </div>
+                <div class="time-labels">
+                    <div class="sunrise">
+                        <p data-sunrise> Sunrise </p>
+                        <span data-sunrise-time> 5:48 A.M </span>
+                    </div>
+                    <div class="sunset">
+                        <p data-sunset>  Sunset </p>
+                        <span data-sunset-time> 5:34 P.M </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="uv-index">
+                <div class="icon">
+                    <i class="fa-solid fa-sun"></i>
+                </div>
+                    <div class="content">
+                        <h3 data-current-uv > 0 UV
+                            <span class="moderate" data-current-uv-state>Low</span>
+                        </h3>
+                        <p data-current-uv-condition > Low risk from UV rays</p>
+                    </div>
+            </div>
             <div class="weather-forecast">
                 <h1 style="color:#112D4E;" >Weather Forecast</h1>
                <ul>
                     <li>
                         <div class="icon">
-                            <i class="fa-solid fa-cloud-showers-heavy" aria-hidden="true"></i>
+                            <!-- <i class="" aria-hidden="true" data-daily-icon></i> -->
+                             <img  src="" data-daily-icon >
                         </div>
                         <div class="weather-detail">
-                            <p class="date"> November 22 </p>
-                            <p class="condition">Rain, Partially cloudy </p>
+                            <p class="date"  data-daily-date> November 22 </p>
+                            <p class="condition" data-daily-condition >Rain, Partially cloudy </p>
                         </div>
                         <div class="temp">
-                            <span class="max">8°C</span>
+                            <span class="max"  data-daily-max-temp >8°C</span>
                             / 
-                            <span class="min">7°C</span>
+                            <span class="min" data-daily-min-temp >7°C</span>
                         </div>
                     </li>
                 
                     <li>   <div class="icon">
-                     <i class="fa-solid fa-wind"></i>
+                     <!-- <i class="fa-solid fa-wind"  data-daily-icon></i> -->
+                      <img  src="" data-daily-icon >
                  </div>
                  <div class="weather-detail">
-                     <p class="date"> November 22 </p>
-                     <p class="condition">Rain, Partially cloudy </p>
+                     <p class="date"  data-daily-date> November 22 </p>
+                     <p class="condition" data-daily-condition> Rain, Partially cloudy </p>
                  </div>
                  <div class="temp">
-                     <span class="max">8°C</span>
+                     <span class="max" data-daily-max-temp>8°C</span>
                       / 
-                     <span class="min">7°C</span>
+                     <span class="min" data-daily-min-temp>7°C</span>
                  </div>
                 </li>
                     <li>   <div class="icon">
-                        <i class="fa-solid fa-cloud-bolt"></i>
+                        <!-- <i class="fa-solid fa-cloud-bolt" data-daily-icon></i> -->
+                         <img  src="" data-daily-icon >
                     </div>
                     <div class="weather-detail">
-                        <p class="date"> November 22 </p>
-                        <p class="condition">Rain, Partially cloudy </p>
+                        <p class="date" data-daily-date> November 22 </p>
+                        <p class="condition" data-daily-condition >Rain, Partially cloudy </p>
                     </div>
                     <div class="temp">
-                        <span class="max">8°C</span>
+                        <span class="max" data-daily-max-temp>8°C</span>
                         / 
-                        <span class="min">7°C</span>
+                        <span class="min" data-daily-min-temp>7°C</span>
                     </div>
                 </li>
             
                 <li>  
                     <div class="icon">
-                        <i class="fa-solid fa-cloud"></i>
+                        <!-- <i class="fa-solid fa-cloud" data-daily-icon></i> -->
+                         <img  src="" data-daily-icon >
                     </div>
                     <div class="weather-detail">
-                        <p class="date"> November 22 </p>
-                        <p class="condition">Rain, Partially cloudy </p>
+                        <p class="date" data-daily-date> November 22 </p>
+                        <p class="condition" data-daily-condition >Rain, Partially cloudy </p>
                     </div>
                     <div class="temp">
-                        <span class="max">8°C</span>
+                        <span class="max" data-daily-max-temp>8°C</span>
                         / 
-                        <span class="min">7°C</span>
+                        <span class="min" data-daily-min-temp>7°C</span>
                     </div>
                 </li>
            
                 <li>   <div class="icon">
-                    <i class="fa-solid fa-cloud-showers-heavy" aria-hidden="true"></i>
+                    <!-- <i class="fa-solid fa-cloud-showers-heavy" aria-hidden="true" data-daily-icon></i> -->
+                     <img  src="" data-daily-icon >
                 </div>
                 <div class="weather-detail">
-                    <p class="date"> November 22 </p>
-                    <p class="condition">Rain, Partially cloudy </p>
+                    <p class="date" data-daily-date> November 22 </p>
+                    <p class="condition" data-daily-condition >Rain, Partially cloudy </p>
                 </div>
                 <div class="temp">
-                    <span class="max">8°C</span>
+                    <span class="max" data-daily-max-temp>8°C</span>
                     / 
-                    <span class="min">7°C</span>
+                    <span class="min" data-daily-min-temp>7°C</span>
                 </div>
                 </li>
            
-                <li>   <div class="icon">
-                    <i class="fa-solid fa-cloud-sun-rain"></i>
+                <li> <div class="icon">
+                    <!-- <i class="fa-solid fa-cloud-sun-rain" data-daily-icon></i> -->
+                     <img  src="" data-daily-icon >
                 </div>
                 <div class="weather-detail">
-                    <p class="date"> November 22 </p>
-                    <p class="condition">Rain, Partially cloudy </p>
+                    <p class="date" data-daily-date> November 22 </p>
+                    <p class="condition" data-daily-condition>Rain, Partially cloudy </p>
                 </div>
                 <div class="temp">
-                    <span class="max">8°C</span>
+                    <span class="max" data-daily-max-temp>8°C</span>
                      / 
-                     <span class="min">7°C</span>
+                     <span class="min" data-daily-min-temp>7°C</span>
                     </div></li>
                     <li> 
                         <div class="icon">
-                            <i class="fa-solid fa-sun"></i>
+                            <!-- <i class="fa-solid fa-sun" data-daily-icon></i> -->
+                             <img  src="" data-daily-icon >
                         </div>
                         <div class="weather-detail">
-                            <p class="date"> November 22 </p>
-                            <p class="condition">Rain, Partially cloudy </p>
+                            <p class="date" data-daily-date> November 22 </p>
+                            <p class="condition" data-daily-condition>Rain, Partially cloudy </p>
                         </div>
                         <div class="temp">
-                            <span class="max">8°C</span>
+                            <span class="max" data-daily-max-temp>8°C</span>
                             / 
-                            <span class="min">7°C</span>
+                            <span class="min" data-daily-min-temp>7°C</span>
+                        </div>
+                    </li>
+                    <li> 
+                        <div class="icon">
+                            <!-- <i class="fa-solid fa-sun" data-daily-icon></i> -->
+                             <img  src="" data-daily-icon >
+                        </div>
+                        <div class="weather-detail">
+                            <p class="date" data-daily-date> November 22 </p>
+                            <p class="condition" data-daily-condition>Rain, Partially cloudy </p>
+                        </div>
+                        <div class="temp">
+                            <span class="max" data-daily-max-temp>8°C</span>
+                            / 
+                            <span class="min" data-daily-min-temp>7°C</span>
+                        </div>
+                    </li>
+                    <li> 
+                        <div class="icon">
+                            <!-- <i class="fa-solid fa-sun" data-daily-icon></i> -->
+                             <img  src="" data-daily-icon >
+                        </div>
+                        <div class="weather-detail">
+                            <p class="date" data-daily-date> November 22 </p>
+                            <p class="condition" data-daily-condition>Rain, Partially cloudy </p>
+                        </div>
+                        <div class="temp">
+                            <span class="max" data-daily-max-temp>8°C</span>
+                            / 
+                            <span class="min" data-daily-min-temp>7°C</span>
+                        </div>
+                    </li>
+                    <li> 
+                        <div class="icon">
+                            <!-- <i class="fa-solid fa-sun" data-daily-icon></i> -->
+                             <img  src="" data-daily-icon >
+                        </div>
+                        <div class="weather-detail">
+                            <p class="date" data-daily-date> November 22 </p>
+                            <p class="condition" data-daily-condition>Rain, Partially cloudy </p>
+                        </div>
+                        <div class="temp">
+                            <span class="max" data-daily-max-temp>8°C</span>
+                            / 
+                            <span class="min" data-daily-min-temp>7°C</span>
+                        </div>
+                    </li>
+                    <li> 
+                        <div class="icon">
+                            <!-- <i class="fa-solid fa-sun" data-daily-icon></i> -->
+                             <img  src="" data-daily-icon >
+                        </div>
+                        <div class="weather-detail">
+                            <p class="date" data-daily-date> November 22 </p>
+                            <p class="condition" data-daily-condition>Rain, Partially cloudy </p>
+                        </div>
+                        <div class="temp">
+                            <span class="max" data-daily-max-temp>8°C</span>
+                            / 
+                            <span class="min" data-daily-min-temp>7°C</span>
+                        </div>
+                    </li>
+                    <li> 
+                        <div class="icon">
+                            <!-- <i class="fa-solid fa-sun" data-daily-icon></i> -->
+                             <img  src="" data-daily-icon >
+                        </div>
+                        <div class="weather-detail">
+                            <p class="date" data-daily-date> November 22 </p>
+                            <p class="condition" data-daily-condition>Rain, Partially cloudy </p>
+                        </div>
+                        <div class="temp">
+                            <span class="max" data-daily-max-temp>8°C</span>
+                            / 
+                            <span class="min" data-daily-min-temp>7°C</span>
+                        </div>
+                    </li>
+                    <li> 
+                        <div class="icon">
+                            <!-- <i class="fa-solid fa-sun" data-daily-icon></i> -->
+                             <img  src="" data-daily-icon >
+                        </div>
+                        <div class="weather-detail">
+                            <p class="date" data-daily-date> November 22 </p>
+                            <p class="condition" data-daily-condition>Rain, Partially cloudy </p>
+                        </div>
+                        <div class="temp">
+                            <span class="max" data-daily-max-temp>8°C</span>
+                            / 
+                            <span class="min" data-daily-min-temp>7°C</span>
+                        </div>
+                    </li>
+                    <li> 
+                        <div class="icon">
+                            <!-- <i class="fa-solid fa-sun" data-daily-icon></i> -->
+                             <img  src="" data-daily-icon >
+                        </div>
+                        <div class="weather-detail">
+                            <p class="date" data-daily-date> November 22 </p>
+                            <p class="condition" data-daily-condition>Rain, Partially cloudy </p>
+                        </div>
+                        <div class="temp">
+                            <span class="max" data-daily-max-temp>8°C</span>
+                            / 
+                            <span class="min" data-daily-min-temp>7°C</span>
                         </div>
                     </li>
                 </div>
                </ul>
             </div>   
         </aside>
+        
     </div>
+    <script type="module" src="main.js"></script>
 </body>
 </html>
