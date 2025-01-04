@@ -603,3 +603,70 @@
     color: #f97f29; 
     text-align: right;
 }
+
+/* General responsive styles */
+@media (max-width: 768px) {
+    /* Stack cards vertically */
+    .dashboard-body {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .today-conditions, 
+    .today-conditions-pt2 {
+        width: 100%; /* Full width on small screens */
+    }
+
+    /* Sidebar becomes horizontal */
+    .sidebar {
+        display: flex;
+        flex-direction: row;
+        max-width: 100%; /* Full width */
+        height: auto; /* Adjust height */
+        overflow-x: auto; /* Enable horizontal scrolling */
+        gap: 15px; /* Space between items */
+    }
+
+    /* Style scrollbar for horizontal sidebar */
+    .sidebar::-webkit-scrollbar {
+        height: 7px; /* Adjust scrollbar height for horizontal scrolling */
+    }
+
+    .sidebar::-webkit-scrollbar-thumb {
+        background: #f97f29;
+        border-radius: 3px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Additional adjustments for very small screens */
+    .dashboard header .say-hello,
+    .dashboard header .hello-user {
+        font-size: 1rem;
+    }
+
+    .weather-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .today-conditions,
+    .today-conditions-pt2 {
+        padding: 15px; /* Adjust padding */
+    }
+
+    .uv-index {
+        flex-direction: column; /* Stack UV index items */
+        gap: 10px;
+        text-align: center;
+    }
+
+    .day-period ul {
+        flex-direction: column; /* Stack day-period items */
+        gap: 20px;
+    }
+
+    .day-period .period-forecast {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
