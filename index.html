@@ -25,7 +25,7 @@
                     <h1>Hello, <span>User</span></h1>
                 </div>
                     <form class="location-search">
-                        <input type="text" placeholder="Search for a location"
+                        <input class="input-search" type="text" placeholder="Search for a location"
                          spellcheck="false" autocomplete="off">
                          <i class="fa-solid fa-magnifying-glass search" 
                          aria-hidden="true"></i>
@@ -104,42 +104,44 @@
                             <h1 style="text-align: center; color: #222831;">How's the weather today?</h1>
                             <ul>
                                 <li class="period-forecast">
-                                    <div class="icon">
+                                    <div class="weather-icon">
                                         <i class="" aria-hidden="true" data-day-period-weather ></i>
                                     </div>
-                                    <h3 data-period-temp>5°C</h3>
-                                    <p data-period-name >Morning</p>
+                                    <h3 style="font-weight: 500; color: #DFFFD8;"data-period-temp>5°C</h3>
+                                    <p style="font-weight: 500; font-size: 0.8rem; color: #DFFFD8;" data-period-name >Morning</p>
                                 </li>
                                 <li class="period-forecast">
-                                    <div class="icon">
+                                    <div class="weather-icon">
                                         <i class="fa-solid fa-cloud-showers-heavy" aria-hidden="true" data-day-period-weather ></i>
                                     </div>
-                                    <h3 data-period-temp>5°C</h3>
-                                    <p data-period-name >Morning</p>
+                                    <h3  style="font-weight: 500; color: #DFFFD8;"data-period-temp>5°C</h3>
+                                    <p style="font-weight: 500; font-size: 0.8rem; color: #DFFFD8;"  data-period-name >Morning</p>
                                 </li>
                             <li class="period-forecast">
-                                <div class="icon">
+                                <div class="weather-icon">
                                     <i class="fa-solid fa-cloud-showers-heavy" aria-hidden="true" data-day-period-weather ></i>
                                 </div>
-                                <h3 data-period-temp>5°C</h3>
-                                <p data-period-name>Morning</p>
+                                <h3 style="font-weight: 500; color: #DFFFD8;" data-period-temp>5°C</h3>
+                                <p  style="font-weight: 500; font-size: 0.8rem; color: #DFFFD8;"  data-period-name>Morning</p>
                             </li>
                             <li class="period-forecast">
-                                <div class="icon">
+                                <div class="weather-icon">
                                     <i class="fa-solid fa-cloud-showers-heavy" aria-hidden="true" data-day-period-weather ></i>
                                 </div>
-                                <h3 data-period-temp>5°C</h3>
-                                <p data-period-name >Morning</p>
+                                <h3 style="font-weight: 500; color: #DFFFD8;" data-period-temp>5°C</h3>
+                                <p style="font-weight: 500; font-size: 0.8rem; color: #DFFFD8;" data-period-name >Morning</p>
                             </li>
+                        </ul>
                         </div>
-                    </ul>
                         <div class="tomorrow">
                             <h3> Tomorrow </h3>
                             <div class="icon">
-                                <i class="fa-solid fa-cloud-showers-heavy" aria-hidden="true" data-tomorrow-icon ></i>
+                                <i class="fa-solid fa-cloud-showers-heavy" aria-hidden="true" data-tomorrow-icon style="font-size: 4rem;" ></i>
                             </div>
-                                <h1 data-tomorrow-temp> 7°C </h1>
-                                <p data-tomorrow-condition > Sunny, Partially cloudy </p>
+                            <div class="sub-content">
+                                <h1 data-tomorrow-temp style="font-size: 1.2rem;"> 7°C </h1>
+                                <p data-tomorrow-condition  style="font-size: 0.8rem;"> Sunny, Partially cloudy </p>
+                            </div>
                         </div>    
                     </div>
 
@@ -159,7 +161,7 @@
                         <i  class="fa-solid fa-sun sun-icon" style="left: 100.00%; 
                         transform: translateX(-100.00%);"
                          aria-hidden="true"></i>
-                         <div class="progress-bar"> <div class="sun-marker" style="left:50%"> </div> </div>
+                         <div class="progress-bar">  </div>
                      </div>
                 </div>
                 <div class="time-labels">

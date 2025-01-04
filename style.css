@@ -2,6 +2,7 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    
 }
 
 #app{
@@ -11,6 +12,8 @@
     font-family: "Montserrat", serif;
     font-optical-sizing: auto;
     font-weight: 300;
+    overflow: hidden; /* Prevent scrolling on the main page */
+
     font-style: normal;
     line-height: 1.5;
     flex-direction: row;
@@ -20,9 +23,9 @@
 
 .location-search input{
     width: 200px;
-    height: 25px;
+    height: 30px;
     padding: 5px;
-    border-radius: 10px;
+    border-radius: 20px;
     border: solid #BBE1FA 1px;
 }
 
@@ -223,6 +226,7 @@
     gap: 10px;
     font-size: .9rem;
     /* width: 100vh; */
+    
 }
 .main-content div{
     width: 50%;
@@ -266,7 +270,7 @@
     color: #000000;
     font-size: .7rem;
     font-weight: bold;
-    background-color: #cce16a;
+    background-color: #FFF574;
     border-radius: 5px;
     
 }
@@ -301,18 +305,18 @@
 
 .dashboard-bottom-section{
     display: flex;
-    gap: 10px;
+    /* gap: 10px; */
 }
 
 .day-period{
     gap: 10px;
     border-radius: 10px;
     padding: 20px;
+    height: 75%;
     margin-right: 4px;
-    background-color: #FFB200;
-    border: solid black 3px;
-    box-shadow: 2px 5px rgba(149, 147, 147, 0.2);
-    flex: 1 1 100%; /* Full width on smaller screens */
+    background-color: #FF884B;
+    border: solid #f97f29 6px;
+    box-shadow: 2px 5px rgba(149, 147, 147, 0.2)
 }
 .day-period ul{
     display: flex;
@@ -328,29 +332,38 @@
     flex: 1;
     padding: 20px 0;
     font-size: .9rem;
-    color: #222831 ;
+    /* color: #222831 ; */
     font-weight: bold;
 }
-.day-period .period-forecast .icon{
+.day-period .period-forecast .weather-icon{
     width: 40px;
     height: 40px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: black solid 1px;
-    color: #087fb5;
+    color: grey;
     background-color: white;
     margin-bottom: 15px;
 }
-.day-period .period-forecast .icon{
-    background-color: #333;
-}
+.weather-icon .current{
+    background-color: #19283f; /* Example color */
+    color: #f97f29;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} 
 
 .tomorrow{
+    height: 75%;
     border-radius: 10px;
-    padding: 20px;
+    padding: 10px;
     background-color: #F05A7E;
+    border:#cce16a;
     flex: 1 1 100%; /* Full width on smaller screens */
     margin-left: 5px;
     color: #DFFFD8;
@@ -361,10 +374,13 @@
     color: #DFFFD8;
     font-size: 4rem;
     text-align: center;
+    margin-top: 20px;
 }
-.tomorrow h1{
-    font-size: .9rem;
+
+.sub-content{
+    height: 110px;
 }
+
 
 
  /* sidebar section */
@@ -418,8 +434,18 @@
     padding: 20px;
 }
 
-.sun-path{
-    width: 100%;
+.sun-path {
+    width: 100%; /* Ensure parent container stretches fully */
+    position: relative; /* Required for child absolute positioning */
+}
+.sun-icon {
+    position: absolute;
+    top: -8px; /* Adjust vertical alignment */
+    width: 16px;
+    height: 16px;
+    font-size: 18px; /* Adjust size of the icon */
+    transform: translateX(-100%);
+    z-index: 10;
 }
 
 .sun {
@@ -427,7 +453,6 @@
     margin: 10px 17px;
     color: #f97f29;
 }
-
 .progress-bar {
     position: relative;
     width: 100%;
@@ -436,7 +461,6 @@
     background-color: #f97f29;
     margin: 10px 0;
 }
-
 
 
 .progress-bar::before {
@@ -462,17 +486,7 @@
     border-radius: 50%;
 }
 
-.sun-marker {
-    position: absolute;
-    top: -8px;
-    width: 14px;
-    height: 14px;
-    background-color: black;
-    border: 1px solid white;
-    border-radius: 50%;
-    transform: translate(-50%, 0);
-    z-index: 10;
-}
+
 .time-labels {
     display: flex;
     width: 100%;

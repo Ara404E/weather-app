@@ -162,15 +162,6 @@ function parseDailyWeather(forecastDays){
     })
 }
 
-function parseHourlyWeather({hourly}){
-    return hourly.time.map((time,index)=>{
-        return {
-            timeStamp: time * 1000,
-            iconCode: hourly.weather_code[index],
-            temp: Math.round(hourly.temperature_2m[index])
-        }
-    })
-}
 
 function parseTimeOfDayWeather( forecast ){
     const hourly=forecast[0].hour

@@ -132,67 +132,118 @@ function renderDailyWeather(daily){
   })
 }
 
+function renderTimeOfTheDayWeather(period) {
+    const periodNames = document.querySelectorAll('[data-period-name]');
+    const periodTemp = document.querySelectorAll('[data-period-temp]');
+    const iconElement = document.querySelectorAll('[data-day-period-weather]');
+    const currentHour = new Date().getHours();
 
-function renderTimeOfTheDayWeather(period){
-    const periodForecast=document.querySelector('.period-forecast')
-    const periodNames=document.querySelectorAll('[data-period-name]')
-    const periodTemp=document.querySelectorAll('[data-period-temp]')
-    const iconElement=document.querySelectorAll('[data-day-period-weather]')
-    iconElement.className=''
-    
-    Array.from(periodNames).forEach(( element, index ) => {
-        const periodKey= Object.keys(period)[index]
-        element.textContent=`${periodKey}`
+    Array.from(periodNames).forEach((element, index) => {
+        const periodKey = Object.keys(period)[index];
+        element.textContent = periodKey;
     });
 
-    Array.from(periodTemp).forEach(( element, index ) => {
-        const periodKey= Object.keys(period)[index]
-        const periodData= period[periodKey]
-        element.textContent=`${periodData.avgTemp}°C`
-       
+    Array.from(periodTemp).forEach((element, index) => {
+        const periodKey = Object.keys(period)[index];
+        const periodData = period[periodKey];
+        element.textContent = `${periodData.avgTemp}°C`;
     });
-        Array.from(iconElement).forEach(( element, index ) => {
-        element.className=""
-        const periodKey= Object.keys(period)[index]
-        const periodData= period[periodKey]
-        element.classList.add(...periodData.iconCode.split(' '))
+
+    Array.from(iconElement).forEach((element, index) => {
+        const periodKey = Object.keys(period)[index];
+        const periodData = period[periodKey];
+        element.className = ""; // Reset previous classes
+        element.classList.add(...periodData.iconCode.split(" "));
     });
-       
+
+    // Highlight the current period
+    let currentPeriod;
+
+    if (currentHour >= 6 && currentHour < 12) {
+        currentPeriod = "morning";
+    } else if (currentHour >= 12 && currentHour < 18) {
+        currentPeriod = "afternoon";
+    } else if (currentHour >= 18 && currentHour < 24) {
+        currentPeriod = "evening";
+    } else {
+        currentPeriod = "midnight";
     }
 
-function renderAstro(astro){
-    
-const sunrise =   document.querySelector("[data-sunrise-time]")
-    sunrise.innerHTML=astro.sunrise
+    // Add the "current" class to the correct period's weather icon
+    const periodForecastElements = document.querySelectorAll('.period-forecast');
+    Array.from(periodForecastElements).forEach((element, index) => {
+        const periodKey = Object.keys(period)[index];
+        const icon = element.querySelector('.weather-icon i');
 
-const sunset =  document.querySelector("[data-sunset-time]")
-    sunset.innerHTML=astro.sunset
+        if (periodKey === currentPeriod) {
+            icon.classList.add('current');
+        } else {
+            icon.classList.remove('current');
+        }
+    });
+}
+function renderAstro(astro) {
+    console.log(`Astro Sunrise: ${astro.sunrise}`);
+    console.log(`Astro Sunset: ${astro.sunset}`);
 
-let sunriseMinute=timeToMinutes(astro.sunrise)
-let sunsetMinute= timeToMinutes(astro.sunset)
-const now = new Date();
-const currentMinutes = now.getHours() * 60 + now.getMinutes();
-let totalDaylight=sunsetMinute - sunriseMinute;
+    const sunrise = document.querySelector("[data-sunrise-time]");
+    sunrise.innerHTML = astro.sunrise;
 
+    const sunset = document.querySelector("[data-sunset-time]");
+    sunset.innerHTML = astro.sunset;
 
-let progress=0;
+    const sunriseMinute = timeToMinutes(astro.sunrise);
+    const sunsetMinute = timeToMinutes(astro.sunset);
 
-if (currentMinutes>=sunriseMinute && currentMinutes <= sunsetMinute ){
-    progress=  ((currentMinutes - sunriseMinute) / totalDaylight) * 100;
+    const now = new Date();
+
+    // Correct calculation of local minutes
+    const currentMinutes = now.getHours() * 60 + now.getMinutes();
+
+    console.log(`System Time (Local): ${now.toLocaleTimeString()}`);
+    console.log(`System Time (UTC): ${now.toUTCString()}`);
+    console.log(`Sunrise in Minutes: ${sunriseMinute}`);
+    console.log(`Sunset in Minutes: ${sunsetMinute}`);
+    console.log(`Current Minutes: ${currentMinutes}`);
+
+    const totalDaylight = sunsetMinute - sunriseMinute;
+    console.log(`Total Daylight: ${totalDaylight} minutes`);
+
+    let progress;
+
+    if (currentMinutes < sunriseMinute) {
+        progress = 0; // Before sunrise, align to sunrise
+        console.log("Before Sunrise");
+    } else if (currentMinutes > sunsetMinute) {
+        progress = 100; // After sunset, align to sunset
+        console.log("After Sunset");
+    } else {
+        progress = ((currentMinutes - sunriseMinute) / totalDaylight) * 100; // During daylight
+        console.log("During Daylight");
+    }
+
+    console.log(`Final Progress: ${progress}%`);
+
+    const sunIcon = document.querySelector(".sun-icon");
+
+    if (sunIcon) {
+        // Ensure the sun icon stays within bounds
+        if (progress < 0) {
+            progress = 0; // Align to sunrise position
+        } else if (progress > 100) {
+            progress = 100; // Align to sunset position
+        }
+
+        sunIcon.style.left = `${progress}%`;
+        sunIcon.style.transform = `translateX(-${progress}%)`;
+    } else {
+        console.error("Sun icon not found in the DOM!");
+    }
 }
 
-const sunIcon = document.querySelector(".sun-icon");
-const sunMarker = document.querySelector(".sun-marker");
 
-if (sunIcon && sunMarker) {
-    sunIcon.style.left = `${progress}%`;
-    sunIcon.style.transform = `translateX(-${progress}%)`;
-    sunMarker.style.left = `${progress}%`;
 
-} else {
-    console.error("Sun icon or marker not found in the DOM!");
-  }
-}
+
 
 
 function renderTomorrowWeather(tomorrow){
@@ -245,11 +296,18 @@ const uvCondition=document.querySelector('[data-current-uv-condition]')
 }
 
 // Helper function 
-function timeToMinutes(time) {
-    const [hoursMinutes, meridian] = time.split(" ");
-    const [hours, minutes] = hoursMinutes.split(":").map(Number);
+function timeToMinutes(timeString) {
+    const [time, modifier] = timeString.split(" ");
+    const [hours, minutes] = time.split(":").map(Number);
+    let totalMinutes = hours * 60 + minutes;
 
-    // Convert to 24-hour format
-    const hoursIn24 = meridian === "PM" && hours !== 12 ? hours + 12 : hours;
-    return hoursIn24 * 60 + minutes;
+    // Adjust for AM/PM
+    if (modifier === "PM" && hours !== 12) {
+        totalMinutes += 12 * 60;
+    }
+    if (modifier === "AM" && hours === 12) {
+        totalMinutes -= 12 * 60;
+    }
+
+    return totalMinutes;
 }
