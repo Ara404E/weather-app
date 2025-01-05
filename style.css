@@ -678,10 +678,13 @@
 
     .dashboard-top-section {
         flex-direction: column !important; /* Stack cards vertically */
+        width: 90%;
     }
 
     .dashboard-bottom-section {
         flex-direction: column !important; /* Stack elements vertically */
+        width: 90%;
+
     }
 
     .day-period ul {
@@ -728,6 +731,10 @@
     .dashboard-top-section {
         flex-direction: column !important; /* Ensure stacking */
         gap: 15px !important;
+        width: 90%;
+    }
+    .dashboard-bottom-section{
+        width: 90%;
     }
 }
 
