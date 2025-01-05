@@ -182,6 +182,7 @@ function renderTimeOfTheDayWeather(period) {
         }
     });
 }
+
 function renderAstro(astro) {
     console.log(`Astro Sunrise: ${astro.sunrise}`);
     console.log(`Astro Sunset: ${astro.sunset}`);

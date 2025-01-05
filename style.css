@@ -1,27 +1,21 @@
-*{
+* {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    
 }
 
-#app{
+#app {
     height: 100vh;
     display: flex;
     font-size: 16px;
+    overflow: auto; /* Enable scrolling */
     font-family: "Montserrat", serif;
-    font-optical-sizing: auto;
-    font-weight: 300;
-    overflow: hidden; /* Prevent scrolling on the main page */
-
-    font-style: normal;
-    line-height: 1.5;
     flex-direction: row;
     justify-content: space-evenly;
 }
 
 
-.location-search input{
+.location-search input {
     width: 200px;
     height: 30px;
     padding: 5px;
@@ -30,13 +24,15 @@
 }
 
 
-.dashboard{
+
+
+.dashboard {
     flex: 1;
     padding: 20px;
     display: flex;
     flex-direction: column;
     gap: 15px;
-    background-color:#fff9f9 ;
+    background-color: #fff9f9;
 }
 
 .dashboard header{
@@ -275,7 +271,6 @@
     
 }
 
-
 .pressure{
     text-align: center;
     padding: 5px;
@@ -364,7 +359,7 @@
     padding: 10px;
     background-color: #F05A7E;
     border:#cce16a;
-    flex: 1 1 100%; /* Full width on smaller screens */
+    flex: auto;
     margin-left: 5px;
     color: #DFFFD8;
     font-weight: 500;
@@ -384,13 +379,12 @@
 
 
  /* sidebar section */
-.sidebar{
+ .sidebar {
     padding: 20px;
     background-color: #FFFFFF;
     overflow-y: auto;
-    flex: 1 1 100%; /* Full width on smaller screens */
+    flex: 1;
     max-width: 30%;
-    height: 100%; /* Fix height to fit content */
 }
 
 /* Webkit-based browsers (Chrome, Edge, Safari) */
@@ -412,9 +406,6 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: #e1e4e9 solid 1px;
-    /* background-color: #F6F1F1; */
-    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
-    /* border-radius: 10px; */
     margin-bottom: 10px;
     padding: 10px;
 }
@@ -604,69 +595,139 @@
     text-align: right;
 }
 
-/* General responsive styles */
-@media (max-width: 768px) {
-    /* Stack cards vertically */
-    .dashboard-body {
-        display: flex;
-        flex-direction: column;
+@media (max-width: 1200px) {
+    #app {
+        height: auto;
+        flex-direction: column !important; /* Ensure column layout */
     }
 
-    .today-conditions, 
-    .today-conditions-pt2 {
-        width: 100%; /* Full width on small screens */
+    .dashboard {
+        width: 100% !important; /* Full-width dashboard */
+        padding: 10px !important; /* Adjust padding for smaller screens */
     }
 
-    /* Sidebar becomes horizontal */
     .sidebar {
-        display: flex;
-        flex-direction: row;
-        max-width: 100%; /* Full width */
-        height: auto; /* Adjust height */
-        overflow-x: auto; /* Enable horizontal scrolling */
-        gap: 15px; /* Space between items */
+        max-width: 100% !important; /* Expand sidebar to full width */
+        flex-direction: row !important;
+        overflow-x: auto !important; /* Enable horizontal scrolling */
+        white-space: nowrap;
+        order: 2; /* Sidebar as the last element */
     }
 
-    /* Style scrollbar for horizontal sidebar */
-    .sidebar::-webkit-scrollbar {
-        height: 7px; /* Adjust scrollbar height for horizontal scrolling */
+    .dashboard-body {
+        grid-template-columns: 1fr !important; /* Single-column layout */
+        gap: 10px !important; /* Smaller gap */
     }
 
-    .sidebar::-webkit-scrollbar-thumb {
-        background: #f97f29;
-        border-radius: 3px;
+    .today-conditions, .today-conditions-pt2 {
+        width: 100% !important; /* Adjust to full width */
+        display: flex !important; /* Stack cards */
+        flex-direction: column !important; /* Ensure vertical stacking */
+        gap: 10px !important; /* Add spacing between stacked cards */
+    }
+
+    .dashboard-top-section {
+        flex-direction: column !important; /* Stack cards vertically */
+    }
+
+    .dashboard-bottom-section {
+        flex-direction: column !important; /* Stack elements vertically */
+    }
+
+    .day-period ul {
+        flex-direction: column !important; /* Stack period forecasts vertically */
+        gap: 20px !important;
+    }
+    .tomorrow {
+        margin-top: 10px !important; 
+    }
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #app {
+        height: auto;
+        flex-direction: column !important; /* Ensure column layout */
+    }
+
+    .dashboard {
+        width: 100% !important; /* Full-width dashboard */
+        padding: 10px !important; /* Adjust padding for smaller screens */
+    }
+
+    .sidebar {
+        max-width: 100% !important; /* Expand sidebar to full width */
+        flex-direction: row !important;
+        overflow-x: auto !important; /* Enable horizontal scrolling */
+        white-space: nowrap;
+        order: 2; /* Sidebar as the last element */
+    }
+
+    .dashboard-body {
+        grid-template-columns: 1fr !important; /* Single-column layout */
+        gap: 10px !important; /* Smaller gap */
+    }
+
+    .today-conditions, .today-conditions-pt2 {
+        width: 100% !important; /* Adjust to full width */
+        display: flex !important; /* Stack cards */
+        flex-direction: column !important; /* Ensure vertical stacking */
+        gap: 10px !important; /* Add spacing between stacked cards */
+    }
+
+    .dashboard-top-section {
+        flex-direction: column !important; /* Stack cards vertically */
+    }
+
+    .dashboard-bottom-section {
+        flex-direction: column !important; /* Stack elements vertically */
+    }
+
+    .day-period ul {
+        flex-direction: column !important; /* Stack period forecasts vertically */
+        gap: 20px !important;
+    }
+    .tomorrow {
+        margin-top: 10px !important; 
     }
 }
 
 @media (max-width: 480px) {
-    /* Additional adjustments for very small screens */
-    .dashboard header .say-hello,
-    .dashboard header .hello-user {
-        font-size: 1rem;
+    .location-search input {
+        width: 150px !important; /* Smaller search box */
     }
 
     .weather-header h2 {
-        font-size: 1.5rem;
+        font-size: 1.5rem !important; /* Adjust font size */
     }
 
-    .today-conditions,
-    .today-conditions-pt2 {
-        padding: 15px; /* Adjust padding */
+    .dashboard {
+        padding: 5px !important;
+        gap: 10px !important; /* Reduce spacing */
     }
 
-    .uv-index {
-        flex-direction: column; /* Stack UV index items */
-        gap: 10px;
-        text-align: center;
+    .dashboard-bottom-section {
+        flex-direction: column !important; /* Stack elements vertically */
     }
 
-    .day-period ul {
-        flex-direction: column; /* Stack day-period items */
-        gap: 20px;
+    .sidebar {
+        padding: 10px !important;
+        overflow-x: visible !important; /* Remove horizontal scroll */
+        order: 2; /* Sidebar as the last element */
+        flex-basis: 100% !important; /* Ensure visibility */
     }
 
-    .day-period .period-forecast {
-        flex-direction: row;
-        justify-content: space-between;
+    .today-conditions, .today-conditions-pt2 {
+        width: 100% !important; /* Ensure cards stack on each other */
+        display: flex !important; /* Stack cards */
+        flex-direction: column !important; /* Ensure vertical stacking */
+        gap: 10px !important; /* Add spacing between stacked cards */
+    }
+
+    .dashboard-top-section {
+        flex-direction: column !important; /* Ensure stacking */
+        gap: 15px !important;
     }
 }
+
