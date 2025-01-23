@@ -201,29 +201,20 @@ function renderAstro(astro) {
     // Correct calculation of local minutes
     const currentMinutes = now.getHours() * 60 + now.getMinutes();
 
-    console.log(`System Time (Local): ${now.toLocaleTimeString()}`);
-    console.log(`System Time (UTC): ${now.toUTCString()}`);
-    console.log(`Sunrise in Minutes: ${sunriseMinute}`);
-    console.log(`Sunset in Minutes: ${sunsetMinute}`);
-    console.log(`Current Minutes: ${currentMinutes}`);
+  
 
     const totalDaylight = sunsetMinute - sunriseMinute;
-    console.log(`Total Daylight: ${totalDaylight} minutes`);
 
     let progress;
 
     if (currentMinutes < sunriseMinute) {
         progress = 0; // Before sunrise, align to sunrise
-        console.log("Before Sunrise");
     } else if (currentMinutes > sunsetMinute) {
         progress = 100; // After sunset, align to sunset
-        console.log("After Sunset");
     } else {
         progress = ((currentMinutes - sunriseMinute) / totalDaylight) * 100; // During daylight
-        console.log("During Daylight");
     }
 
-    console.log(`Final Progress: ${progress}%`);
 
     const sunIcon = document.querySelector(".sun-icon");
 
