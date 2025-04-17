@@ -1,5 +1,5 @@
 
-const API_KEY= "9749c88da7d84e6fbe1160220250301"
+const API_KEY= "a1917715deeb40b29c7153448251704"
 
 const WEATHER_ICON_MAP = {
     1000: "fa-solid fa-sun", // Clear sky (day)
