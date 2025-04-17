@@ -16,7 +16,7 @@ function renderWeather({ location ,current, today ,tomorrow , daily , timeOfDayW
 
 
 if(getWeather(null)){
-    getWeather(Intl.DateTimeFormat().resolvedOptions().timeZone)
+    getWeather(10,10,Intl.DateTimeFormat().resolvedOptions().timeZone)
     .then(data =>{
         console.log(data)
         renderWeather(data)
